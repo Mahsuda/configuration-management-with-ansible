@@ -20,5 +20,10 @@
       yum:
         name: telnet
         state: latest
-
+    - name: add user bob
+      user: 
+        name: present
+        commnet: "Bob Smith"
+        group: wheel
+        uid: 2001
       
