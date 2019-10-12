@@ -23,7 +23,7 @@
     - name: add user bob
       user: 
         name: present
-        commnet: "Bob Smith"
+        comment: "Bob Smith"
         group: wheel
         uid: 2001
     - name: install lftp
