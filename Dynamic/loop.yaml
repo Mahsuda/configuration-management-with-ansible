@@ -15,4 +15,4 @@
          - curl
          - gzip
          - httpd
-         - openssh-serever
+         - openssh-server
