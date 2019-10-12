@@ -12,4 +12,13 @@
       systemd:
         name: httpd
         state: restarted
+    - name: install firewalld
+      yum: 
+        name: firewalld
+        state: latest
+    - name: install telnet
+      yum:
+        name: telnet
+        state: latest
+        
       
