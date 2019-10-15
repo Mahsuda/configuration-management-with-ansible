@@ -1,0 +1,14 @@
+---
+- name: playbook for tasks
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks: 
+    - name: install apache 
+      yum:
+        name: httpd
+        state: present
+    - name: start apache 
+      systemd:
+        name: httpd
+        state: restarted
