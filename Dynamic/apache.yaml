@@ -49,18 +49,18 @@
     
     - name: download wordpress
       get_url: 
-        url: "https://wordpress.org/wordpress-5.2.3.zip"
+        url: "wget https://wordpress.org/latest.tar.gz"
         dest: /tmp
 
 
     - name: unzip file
       unarchive: 
-        src: /tmp/wordpress-5.2.3.zip
+        src: /tmp/tar -xzvf latest.tar.gz
         dest: /var/www/html/
         remote_src: yes
 
     - name: move wordpress to /var/www/html/
       shell: "mv /var/www/html/wordpress/* /var/www/html"
 
-    - name: grunting priv to apache
+    - name: granting privileges to apache
       shell: "chown -R apache:apache /var/www/html/*"  
