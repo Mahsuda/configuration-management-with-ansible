@@ -1,5 +1,5 @@
 
- ---
+---
 - name: install LAMP stack
   hosts: all
   become: yes
