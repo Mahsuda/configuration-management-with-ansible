@@ -17,4 +17,4 @@
     
 
   - name: Get key
-   shell: "r1soft-setup --get-key "http://52.212.150.163:8080"
+    shell: "r1soft-setup --get-key "http://52.212.150.163:8080"
