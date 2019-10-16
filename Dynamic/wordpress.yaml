@@ -41,7 +41,7 @@
     - name: update php
       shell: yum install epel-release -y
     - name: a  
-      shell: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+      shell: http://rpms.remirepo.net/enterprise/remi-release-72.rpm
     - name: b    
       shell: yum -y install yum-utils -y
     - name: b        
