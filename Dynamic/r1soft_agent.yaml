@@ -6,14 +6,14 @@
   tasks:
     - name: Create repo
       copy:
-      src: r1soft.repo
-      dest: /etc/yum.repos.d/
+        src: r1soft.repo
+        dest: /etc/yum.repos.d/
 
 
     - name: Install agent
       package:
-      name: serverbackup-enterprise-agent
-      state: present
+        name: serverbackup-enterprise-agent
+        state: present
     
 
     - name: Get key
