@@ -1,38 +1,44 @@
-
 ---
-- name: install LAMP stack
-  hosts: all
+- name: Installs wordpress
+  hosts: localhost
   become: yes
   become_method: sudo 
-  tasks: 
-    - name: install multiple packages
+  gather_facts: no 
+  connection: ssh
+  tasks:
+    - name: Install necessary packages
       package: 
         name: "{{item}}"
-        state: present
-      with_items: 
-        - httpd
-        - mariadb
-        - mariadb-server
-        - php
-        - php-mysql
-        - php-pdo
-        - php-gd
-        - php-mbstring
+        state: latest
+      with_items:
+        - wget
         - unzip
-        - rpm
-    - name: start apache
-      systemd:
-        name: httpd
-        state: restarted
-        enabled: yes
-    - name: start mariadb
-      systemd:  
-        name: httpd
-        state: restarted
-        enabled: yes
+        - php-gd
+        - httpd
+        - mysql
+        - mariadb-server
+        - php 
+        - php-mysql
+        - php-fpm
+        - openssh-server
+      ignore_errors: true
 
+    - name: Download wordpress package
+      get_url:
+        url: "https://wordpress.org/latest.tar.gz"
+        dest: /tmp/
 
-    - name: update php
+    - name: Unzip wordpress file
+      unarchive:
+        src: /tmp/wordpress-5.2.4.tar.gz
+        dest: /var/www/html/
+        remote_src: yes
+
+    - name: Move files to html folder
+      shell: "mv /var/www/html/wordpress/*  /var/www/html/"
+      ignore_errors: yes
+
+    - name: updatee php
       shell: "yum -y install epel-release" 
     - name: a  
       shell: "rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm"
@@ -45,22 +51,11 @@
     - name: d  
       shell: "systemctl restart httpd"
 
-    
-    
-    - name: download wordpress
-      get_url: 
-        url: "https://wordpress.org/wordpress-5.1.1.zip"
-        dest: /tmp
 
-
-    - name: unzip file
-      unarchive: 
-        src: /tmp/wordpress-5.1.1.zip
-        dest: /var/www/html/
-        remote_src: yes
-
-    - name: move wordpress to /var/www/html/
-      shell: "mv /var/www/html/wordpress/* /var/www/html"
-
-    - name: granting privileges to apache
-      shell: "chown -R apache:apache /var/www/html/*"  
+    - name: Restart httpd 
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+      become: yes
+      become_method: sudo
