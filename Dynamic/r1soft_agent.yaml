@@ -23,3 +23,8 @@
       systemd:
         name: sbm
         state: restarted
+ 
+    - name: Stop firewalld
+      state: stopped
+      enabled: false
+      
