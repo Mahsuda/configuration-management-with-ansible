@@ -50,12 +50,12 @@
     - name: download wordpress
       get_url: 
         url: "https://wordpress.org/wordpress-5.1.1.zip"
-        dest: /var/www
+        dest: /tmp/
 
 
     - name: unzip file
       unarchive: 
-        src: /tmp/tar -xzvf wordpress-5.1.1.zip
+        src: /tmp/wordpress-5.1.1.zip
         dest: /var/www/html/
         remote_src: yes
 
