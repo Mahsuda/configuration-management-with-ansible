@@ -12,7 +12,7 @@
 
     - name: Install agent
       package:
-      name: resverbackup-enterprise-agent
+      name: serverbackup-enterprise-agent
       state: present
     
 
