@@ -25,7 +25,7 @@
 
     - name: Download wordpress package
       get_url:
-        url: "https://wordpress.org-5.2.4.tar.gz"
+        url: "https://wordpress.org/latest.tar.gz"
         dest: /tmp/
 
     - name: Unzip wordpress file
@@ -41,11 +41,11 @@
     - name: update php
       shell: yum -y install epel-release 
     - name: a  
-      shell: rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+      shell: rpm -Uvh "http://rpms.remirepo.net/enterprise/remi-release-7.rpm"
     - name: b    
       shell: yum -y install yum-utils
     - name: b        
-      shell: yum-config-manager --enable remi-php70
+      shell: yum-config-manager --enable remi-php72
     - name: c   
       shell: yum update -y
     - name: d  
