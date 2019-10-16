@@ -25,7 +25,7 @@
 
     - name: Download wordpress package
       get_url:
-        url: "https://wordpress.org/latest.tar.gz"
+        url: "https://wordpress-5.2.4.tar.gz"
         dest: /tmp/
 
     - name: Unzip wordpress file
