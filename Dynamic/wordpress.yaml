@@ -35,7 +35,7 @@
         remote_src: yes
 
     - name: Move files to html folder
-      shell: mv /var/www/html/wordpress/*  /var/www/html/
+      shell: cp /var/www/html/wordpress/*  /var/www/html/
       ignore_errors: yes
 
     - name: update php
