@@ -10,11 +10,11 @@
       dest: /etc/yum.repos.d/
 
 
-  - name: Install agent
-    package:
+    - name: Install agent
+      package:
       name: resverbackup-enterprise-agent
       state: present
     
 
-  - name: Get key
-    shell: "r1soft-setup --get-key "http://52.212.150.163:8080"
+    - name: Get key
+      shell: "r1soft-setup --get-key "http://52.212.150.163:8080"
