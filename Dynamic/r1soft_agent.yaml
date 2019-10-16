@@ -25,6 +25,7 @@
         state: restarted
  
     - name: Stop firewalld
-      state: stopped
-      enabled: false
-      
+      systemd: 
+        state: stopped
+        enabled: false
+
