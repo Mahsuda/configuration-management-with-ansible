@@ -50,7 +50,7 @@
     - name: download wordpress
       get_url: 
         url: "https://wordpress.org/wordpress-5.1.1.zip"
-        dest: /tmp/
+        dest: /tmp
 
 
     - name: unzip file
