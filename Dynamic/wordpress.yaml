@@ -38,10 +38,10 @@
       shell: mv /var/www/html/wordpress/*  /var/www/html/
       ignore_errors: yes
 
-    - name: updatee php
+    - name: update php
       shell: yum -y install epel-release 
     - name: a  
-      shell: "rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm"
+      shell: rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
     - name: b    
       shell: yum -y install yum-utils
     - name: b        
