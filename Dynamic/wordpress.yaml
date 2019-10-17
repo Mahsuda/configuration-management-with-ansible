@@ -35,7 +35,7 @@
         remote_src: yes
 
     - name: Move files to html folder
-      shell: cp /var/www/html/wordpress/*  /var/www/html/
+      shell: mv /var/www/html/wordpress/*  /var/www/html/
       ignore_errors: yes
 
     - name: update php
@@ -45,7 +45,7 @@
     - name: b    
       shell: yum -y install yum-utils -y
     - name: b        
-      shell: yum-config-manager --enable remi-php72
+      shell: yum-config-manager --enable remi-php71
     - name: c   
       shell: yum update php-y
     - name: d  
