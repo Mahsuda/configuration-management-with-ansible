@@ -1,5 +1,5 @@
 ---
-- name: playbook for tasks
+- name: Install apache
   hosts: all
   become: yes
   become_method: sudo
