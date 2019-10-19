@@ -1,5 +1,5 @@
 ---
-- name: playbook for zipping logscvsbvb
+- name: playbook for zipping log
   hosts: all
   become: yes
   become_method: sudo
