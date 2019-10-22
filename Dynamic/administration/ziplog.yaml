@@ -1,8 +1,8 @@
 ---
-- name: playbook for zipping log
+- name: Playbook for zipping logs
   hosts: all
   become: yes
   become_method: sudo
-  tasks: 
+  tasks:
     - name: Log files older than 90 days
-      shell: "find /var/log/httpd/ -type f -name *.log -mtime +90 -exec gzip -9 {} + "
+      shell: "find /var/log/httpd/ -type f -name *.log -mtime +90 -exec gzip -9 {} +"
