@@ -19,4 +19,11 @@
          - talant
          - mika
          - anara
+  name: Create ssh key
+    - create ssh key forkjg each user
+    - copy ssh key to this vm:
+      - dev
+      - qa
+      - prod
+
          
