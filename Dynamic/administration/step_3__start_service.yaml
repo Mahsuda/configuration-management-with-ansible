@@ -1,6 +1,6 @@
 ---
 - name: Playbook for Starting Services
-    hosts: "{{hosts}}"
+   hosts: "{{hosts}}"
     become: yes
     become_method: sudo
     tasks:
