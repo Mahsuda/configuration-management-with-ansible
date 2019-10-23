@@ -20,7 +20,7 @@
          - mika
          - anara
   host: all       
-  name: Create ssh key
+  name: Create ssh public key
     task:
       name: create public ssh key for each user
       cp: pub-key to this "{{hosts}}"
