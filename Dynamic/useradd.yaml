@@ -20,10 +20,9 @@
          - mika
          - anara
   host: all       
-  name: Create ssh public key
-    task:
-      name: create public ssh key for each user
-      cp: pub-key to this "{{hosts}}"
+   - name: Create ssh public key
+   task:
+      name: create public ssh key for each use
       fetch: pull public-keys 
       put: /home/mahsuda/hosts-public-keys
 
