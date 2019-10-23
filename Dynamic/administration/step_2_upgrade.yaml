@@ -4,35 +4,26 @@
   become: yes
   become_method: sudo
   tasks:
-    - name: register
+    - name: Output
       shell: uname -r
-      register: message
-    - name: Debug
-      debug:
-        msg: "{{message}}"
-
-    - name: upgrade kernel
-      package: 
-        name: kernel
-        state: latest
-
-    - name: Reboot the serer for kernel update
-      shell: "shutdown -r now"
-
-    - name: Wait 600 seconds for target connection to become reachable/usable
-      shell: ( sleep 3 && /sbin/reboot & )
-      async: 0
-      poll: 0
-       
-    - name: Wait for the server to reboot 
-      local_action: wait_for host="{{ansible_host}}" delay=15 state=started port=22
-
-
-    - name: register
-      shell: uname -r
-      register: message
+      register:  kernel
       
     - name: Debug
       debug:
-        msg: "{{message}}"
+        var: kernel.stdout
+
+    - name: Reboot the server for kernel update
+      shell: ( sleep 3 && /sbin/reboot & )
+      async: 0
+      poll: 0
+
+    - name: Wait for the server to reboot
+      local_action: wait_for host="{{ansible_host}}" delay=15 state=started port=22                 connect_timeout=10 timeout=180
     
+    - name: Output
+      shell: uname -r
+      register:  kernel
+
+    - name: Debug
+      debug:
+        var: kernel.stdout
