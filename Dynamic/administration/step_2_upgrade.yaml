@@ -11,6 +11,10 @@
     - name: Debug
       debug:
         var: kernel.stdout
+    - name: Update kernel
+      package: 
+        name: kernel
+        state: latest
 
     - name: Reboot the server for kernel update
       shell: ( sleep 3 && /sbin/reboot & )
