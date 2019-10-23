@@ -1,5 +1,5 @@
 ---
-  - name: Playbook for Stopping Services
+- name: Playbook for Stopping Services
     hosts:  "{{hosts}}"
     become: yes
     become_method: sudo
@@ -30,7 +30,7 @@
         ignore_errors: true
 
 
-        
+
       - name: Stop service1
         when:  (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7") or
         systemd:
