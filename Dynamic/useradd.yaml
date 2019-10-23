@@ -19,11 +19,14 @@
          - talant
          - mika
          - anara
+  host: all       
   name: Create ssh key
-    - create ssh key forkjg each user
-    - copy ssh key to this vm:
-      - dev
-      - qa
-      - prod
+    task:
+      name: create public ssh key for each user
+      cp: pub-key to this "{{hosts}}"
+      fetch: pull public-keys 
+      put: /home/mahsuda/hosts-public-keys
+
+    
 
          
