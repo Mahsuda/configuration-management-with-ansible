@@ -4,13 +4,13 @@
   become: yes
   become_method: sudo
   tasks:
-   - name: register
-      shell: uname -r
+    - name: register
+       shell: uname -r
       register: message
 
     - name: Debug
       debug:
-        msg: "{{message}}"
+         msg: "{{message}}"
     - name: upgrade kernel
       package:
         name: kernel
@@ -19,6 +19,15 @@
     - name: Reboot
       shell: "shutdown -r now"
 
-    - name: Pause 
-      pause: 
-        minutes: 5 
+    - name: Wait 600 seconds for target connections to become
+      wait_for connection: 
+        delay: 60
+        timeout: 300
+
+    - name: register
+       shell: uname -r
+      register: message
+
+    - name: Debug
+      debug:
+         msg: "{{message}}"
