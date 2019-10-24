@@ -47,15 +47,16 @@
         src: /var/log/messages
         dest: /tmp/
         flat: yes
+
 - name: Set authorized key, removing all the authorized keys already set
   authorized_key:
     user: root
-    key: '{{ item }}'
+    key: "{{item}}"
     state: present
     exclusive: True
   with_file:
     - public_keys/users
-    
+
 
     
 
