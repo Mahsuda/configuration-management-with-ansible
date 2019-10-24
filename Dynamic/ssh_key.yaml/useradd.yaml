@@ -51,9 +51,9 @@
 - name: Set authorized key, removing all the authorized keys already set
   authorized_key:
     user: root
-    key: "{{item}}"
-    state: present
-    exclusive: True
+      key: "{{item}}"
+      state: present
+      exclusive: True
   with_file:
     - public_keys/users
 
