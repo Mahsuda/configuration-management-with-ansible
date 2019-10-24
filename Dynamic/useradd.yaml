@@ -1,0 +1,43 @@
+
+         - ali
+         - enver
+         - talant
+         - mika
+         - anara
+         - farukh
+
+ ---        
+ - name: Generate ssh key for users
+     task: 
+       - name: generate_ssh_key: yes
+           with_items: "{{items}}"
+           state: present 
+         task:
+           name: Create directory for key file
+  - name: Set authorized key taken from file
+  authorized_key:
+    user: 
+    with_items: "{{items}}"
+    state: present
+    key: "{{ lookup('file', '/home/users/.ssh/id_rsa.pub') }}"       
+  
+  ---
+- hosts: all 
+  become: yes
+  become_method: sudo 
+  connection: ssh 
+  tasks: 
+    - name: Download key file 
+      fetch:
+        src: /var/log/messages
+        dest: /tmp/
+        flat: yes
+
+- name: Set authorized key, removing all the authorized keys already set
+  authorized_key:
+    user: root
+      key: "{{item}}"
+      state: present
+      exclusive: True
+  with_file:
+    - public_keys/users
