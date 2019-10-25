@@ -3,8 +3,7 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  become: yes
-  become_method: sudo 
+  become: false
   tasks:
     - ec2:
         key_name: "{{key_name}}"
