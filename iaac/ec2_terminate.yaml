@@ -1,0 +1,11 @@
+---
+- name: Playbook for terminating, starting abd stopping ec2
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  tasks:
+     ec2:
+        state: "{{state}}"
+        instance_ids: "{{ ec2.instance_ids }}"
+        region: "{{region}}"
