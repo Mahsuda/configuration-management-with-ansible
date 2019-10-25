@@ -5,7 +5,7 @@
   gather_facts: false
   become: false
   tasks:
-     ec2:
+    - ec2:
         state: "{{state}}"
         instance_ids: "{{ ec2.instance_ids }}"
         region: "{{region}}"
