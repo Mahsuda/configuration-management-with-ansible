@@ -17,8 +17,8 @@
 
 - name: Start agent
   systemd:
-  name: sbm
-  state: restarted
+    name: sbm
+    state: restarted
  
 - name: Stop firewalld
   systemd: 
