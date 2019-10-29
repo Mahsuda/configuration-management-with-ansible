@@ -1,2 +1,10 @@
-localhost
+---
+- name: Install wordpress
+  hosts: "{{hosts}}
+  become: yes
+  becomo_method: sudo
+  roles: 
+  - wordpress
+
+
 
