@@ -2,3 +2,10 @@
 # vars file for package
 r1soft_server_ip: "52.212.150.163"
 r1soft_server_port: "8080"
+
+users:
+- sam 
+- john 
+- bob 
+
+
