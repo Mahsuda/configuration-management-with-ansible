@@ -5,7 +5,7 @@
   tasks: 
     - local_action:
         module: ec2_elb_lb
-        name: "New ELB"
+        name: "NewELB"
         state: present
         region: us-east-
         listeners:
@@ -13,6 +13,6 @@
               load_balancer_port: 80
               instance_port: 80
               tags:
-                Name: "New ELB"
+                Name: "NewELB"
                 stack: "production"
                 client: "Bob" 
