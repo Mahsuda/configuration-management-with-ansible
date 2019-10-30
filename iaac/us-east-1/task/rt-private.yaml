@@ -1,0 +1,18 @@
+---
+- name: Playbook for sec group
+  hosts: localhost
+  tasks:
+    - name: Set up private subnet route table
+  ec2_vpc_route_table:
+    vpc_id: vpc-1245678
+    region: us-west-1
+    tags:
+      Name: private
+    subnets:
+      - subnet-3c34d132
+      - subnet-67fc8b59
+      - subnet-69d4f835
+
+    routes:
+      - dest: 10.0.0.0/16gateway_id
+     register: private_route_table

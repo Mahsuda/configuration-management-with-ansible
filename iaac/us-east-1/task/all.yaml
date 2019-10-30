@@ -2,9 +2,8 @@
 - name: Playbook for sec group
   hosts: localhost
   gather_facts: no
-    - name: Check host
+    - name:Check host
       ping:
-
 
 - name: Run Private Playbook
   Include: private_subnets.yaml
@@ -21,4 +20,11 @@
 
 - name: Add igw
   import_playbook: igw.yaml
+
+- name: Add Public RT
+  import_playbook: rt_public.yaml
+
+- name: Add private RT
+  import_playbook: rt_private.yaml
+
 
