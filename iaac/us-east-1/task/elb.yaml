@@ -1,0 +1,18 @@
+---
+- name: Playbook for sec group
+  hosts: localhost
+  gather_facts: no
+  tasks: 
+    - local_action:
+        module: ec2_elb_lb
+        name: "New ELB"
+        state: present
+        region: us-east-
+        listeners:
+            - protocol: http
+              load_balancer_port: 80
+              instance_port: 80
+              tags:
+                Name: "New ELB"
+                stack: "production"
+                client: "Bob" 
