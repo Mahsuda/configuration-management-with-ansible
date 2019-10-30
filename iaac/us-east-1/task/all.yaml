@@ -18,3 +18,7 @@
 
 - name: Create VPC
   include: vpc.yaml
+
+- name: Add igw
+  import_playbook: igw.yaml
+  
