@@ -1,5 +1,5 @@
 ---
-- name: Playbook for sec group
+- name: Playbook for ELB 
   hosts: localhost
   gather_facts: no
   tasks: 
@@ -7,12 +7,14 @@
         module: ec2_elb_lb
         name: "NewELB"
         state: present
-        region: us-east-
+        region: us-east-1
+        subnets: [ "{{Web_subnet1.subnet.id}}" ]
+        security_group: 
         listeners:
-            - protocol: http
-              load_balancer_port: 80
-              instance_port: 80
-              tags:
-                Name: "NewELB"
+          - protocol: http
+            load_balancer_port: 80
+            instance_port: 80
+            tags:
+              Name: "NewELB"
                 stack: "production"
                 client: "Bob" 

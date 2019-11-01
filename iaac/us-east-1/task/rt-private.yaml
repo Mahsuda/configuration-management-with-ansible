@@ -3,16 +3,18 @@
   hosts: localhost
   tasks:
    gather_facts: no
-    - name: Set up private subnet route table
+
+
+- name: Set up private subnet route table
   ec2_vpc_route_table:
-    vpc_id: vpc-1245678
+    vpc_id: 
     region: us-west-1
     tags:
       Name: private
     subnets:
-      - subnet-3c34d132
-      - subnet-67fc8b59
-      - subnet-69d4f835
+      - "{{database_subnet1.subnet.id}}"
+      - "{{database_subnet1.subnet.id}}"
+      - "{{database_subnet1.subnet.id}}"
 
     routes:
       - dest: 10.0.0.0/16gateway_id

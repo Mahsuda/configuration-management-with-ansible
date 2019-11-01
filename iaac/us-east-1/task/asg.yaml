@@ -1,5 +1,5 @@
 ---
-- name: Playbook for sec group
+- name: Playbook for VPC
   hosts: localhost
   gather_facts: no
   tasks: 
@@ -9,9 +9,11 @@
         image_id: ami-02eac2c0129f6376b
         key_name: mykey
         region: us-east-1
-        security_groups: sg-23423
-        instance_type: m1.small
+        security_groups: "{{SecurityGroup.group_id}}"
+        instance_type: m2.micro
         assign_public_ip: yes
+
+
 -name: ASG
  ec2_asg:
    name: myasg
@@ -22,5 +24,8 @@
    min_size: 3
    max_size: 48
    desired_capacity: 3
-   vpc_zone_
+   vpc_zone_identifier: [ "{{Web_subnet1.subnet.id}}", "{{Web_subnet2.subnet.id}}", "{{Web_subnet3.subnet.id}}" ]
    region: us-east-1
+   tags:
+     - name: Webserver
+       propagate_at_launch: yes

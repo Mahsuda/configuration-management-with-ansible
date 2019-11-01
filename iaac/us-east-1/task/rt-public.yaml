@@ -1,18 +1,20 @@
 ---
-- name: Playbook for sec group
+- name: Playbook for route table
   hosts: localhost
   tasks:
    gather_facts: no
+
+- name: Collect VPC info 
     - name: Set up public subnet route table
   ec2_vpc_route_table:
-    vpc_id: vpc-1245678
+    vpc_id:  "{{VPC1.vpc[0].vpc_id}}"
     region: us-west-1
     tags:
       Name: Public
     subnets:
-      - subnet-3c34d132
-      - subnet-67fc8b59
-      - subnet-69d4f835
+      -"{{Web_subnet1.subnet.id}}"
+      -"{{Web_subnet2.subnet.id}}"
+      -"{{Web_subnet3.subnet.id}}"
 
     routes:
       - dest: 0.0.0.0/0
